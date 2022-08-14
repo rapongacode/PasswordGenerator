@@ -1,0 +1,97 @@
+﻿<Window x:Class="PasswordGenerator.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PasswordGenerator.Views"
+        xmlns:viewModels="clr-namespace:PasswordGenerator.ViewModels"
+        mc:Ignorable="d"
+        Title="Password Generator" Height="190" Width="440" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <viewModels:MainViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="ButtonIconStyle" TargetType="Image">
+            <Setter Property="Width" Value="24" />
+            <Setter Property="Height" Value="24" />
+            <Setter Property="Stretch" Value="None" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="8" Opacity=".3" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
+    <StackPanel Margin="12">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox FontSize="24" HorizontalContentAlignment="Center" IsReadOnly="True" Text="{Binding Password}" />
+            <Button Grid.Column="1" Margin="6 0 0 0" Padding="4">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding GenerateCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <Image Source="/Assets/GenerateIcon.png" Style="{StaticResource ButtonIconStyle}" />
+            </Button>
+            <Button Grid.Column="2" Margin="6 0 0 0" Padding="4">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding CopyCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <Image Source="/Assets/CopyIcon.png" Style="{StaticResource ButtonIconStyle}" />
+            </Button>
+        </Grid>
+        <Grid Margin="0 6 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock>Length:</TextBlock>
+            <Slider Grid.Column="1" Margin="4 0 0 0" Minimum="1" Maximum="60" Value="{Binding Length}" />
+            <TextBlock Grid.Column="2" Text="{Binding Length}" />
+            <CheckBox Grid.Column="3" Margin="4 0 0 0" IsChecked="{Binding Uppercase}">ABC</CheckBox>
+            <CheckBox Grid.Column="4" Margin="4 0 0 0" IsChecked="{Binding Lowercase}">abc</CheckBox>
+            <CheckBox Grid.Column="5" Margin="4 0 0 0" IsChecked="{Binding Numbers}">123</CheckBox>
+            <CheckBox Grid.Column="6" Margin="4 0 0 0" IsChecked="{Binding Symbols}">#$&amp;</CheckBox>
+        </Grid>
+        <TextBlock Margin="0 20 0 0" TextAlignment="Center">
+            Icons made by
+            <Hyperlink>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:LaunchUriOrFileAction Path="https://www.flaticon.com/authors/pixel-perfect" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                
+                Pixel perfect
+            </Hyperlink>
+             from 
+            <Hyperlink>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:LaunchUriOrFileAction Path="https://www.flaticon.com/" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                
+                www.flaticon.com
+            </Hyperlink>
+        </TextBlock>
+    </StackPanel>
+</Window>
