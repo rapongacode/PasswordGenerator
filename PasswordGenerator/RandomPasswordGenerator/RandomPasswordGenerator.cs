@@ -10,11 +10,8 @@ namespace PasswordGenerator.RandomPasswordGenerator
         private readonly Random _random = new();
 
         private static readonly char[] _uppercaseCharacterSet = GetCharacterSet('A', 'Z');
-
         private static readonly char[] _lowercaseCharacterSet = GetCharacterSet('a', 'z');
-
         private static readonly char[] _numbersCharacterSet = GetCharacterSet('0', '9');
-
         private static readonly char[] _symbolsCharacterSet = @"!#$%&()*+@\[]^_{}".ToCharArray();
 
         public int Length { get; set; }
@@ -33,11 +30,11 @@ namespace PasswordGenerator.RandomPasswordGenerator
         }
 
         public RandomPasswordGenerator(Random random,
-                                 int length,
-                                 bool uppercase,
-                                 bool lowercase,
-                                 bool numbers,
-                                 bool symbols)
+                                       int length,
+                                       bool uppercase,
+                                       bool lowercase,
+                                       bool numbers,
+                                       bool symbols)
         {
             _random = random;
             Length = length;
@@ -48,10 +45,10 @@ namespace PasswordGenerator.RandomPasswordGenerator
         }
 
         public RandomPasswordGenerator(int length,
-                                 bool uppercase,
-                                 bool lowercase,
-                                 bool numbers,
-                                 bool symbols)
+                                       bool uppercase,
+                                       bool lowercase,
+                                       bool numbers,
+                                       bool symbols)
         {
             Length = length;
             Uppercase = uppercase;
