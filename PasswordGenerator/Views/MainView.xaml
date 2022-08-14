@@ -72,6 +72,18 @@
             <CheckBox Grid.Column="6" Margin="4 0 0 0" IsChecked="{Binding Symbols}">#$&amp;</CheckBox>
         </Grid>
         <TextBlock Margin="0 20 0 0" TextAlignment="Center">
+            Source code on
+            
+            <Hyperlink>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:LaunchUriOrFileAction Path="https://github.com/rapongacode/PasswordGenerator" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                
+                GitHub
+            </Hyperlink>
+            <LineBreak />
             Icons made by
             <Hyperlink>
                 <i:Interaction.Triggers>
@@ -80,9 +92,9 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
                 
-                Pixel perfect
+                Pixel perfect 
             </Hyperlink>
-             from 
+            from 
             <Hyperlink>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
